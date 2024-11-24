@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Record to <%= table %></title>
+</head>
+<body>
+    <h1>Add Record to Table: <%= table %></h1>
+    <form action="/add/<%= table %>" method="POST">
+        <% columns.forEach(column => { %>
+            <label for="<%= column.name %>"><%= column.name %>:</label>
+            <input type="text" id="<%= column.name %>" name="<%= column.name %>" 
+                   <%= column.notnull ? "required" : "" %>><br><br>
+        <% }); %>
+        <button type="submit">Add Record</button>
+    </form>
+    <br>
+    <a href="/">Back to Menu</a>
+</body>
+</html>
+

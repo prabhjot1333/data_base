@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Record in <%= table %></title>
+</head>
+<body>
+    <h1>Edit Record in Table: <%= table %></h1>
+    <!-- Form to submit the updated record data -->
+    <form action="/update/<%= table %>" method="POST">
+        <!-- Hidden field for rowid to identify the record being updated -->
+        <input type="hidden" name="rowid" value="<%= row.rowid %>">  <!-- Ensure rowid is passed correctly -->
+        
+        <table>
+            <tbody>
+                <!-- Iterate through each key in the row object -->
+                <% Object.keys(row).forEach(key => { %>
+                    <!-- Skip the rowid field from being shown in the form -->
+                    <% if (key !== 'rowid') { %> 
+                        <tr>
+                            <td><%= key %></td>
+                            <!-- Input field for each column -->
+                            <td><input type="text" name="<%= key %>" value="<%= row[key] %>"></td>
+                        </tr>
+                    <% } %>
+                <% }); %>
+            </tbody>
+        </table>
+        
+        <!-- Submit button for the form -->
+        <button type="submit">Update</button>
+    </form>
+    
+    <br>
+    <!-- Link to navigate back to the table -->
+    <a href="/update/<%= table %>">Back to Table</a>
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fast Cabs Tables</title>
+</head>
+<body>
+    <h1>Fast Cabs Database Tables</h1>
+    <ul>
+        <% tables.forEach(table => { %>
+            <li><a href="/table/<%= table.name %>"><%= table.name %></a></li>
+        <% }) %>
+    </ul>
+</body>
+</html>
