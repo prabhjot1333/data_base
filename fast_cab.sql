@@ -1,0 +1,471 @@
+-- -- Driver table
+-- CREATE TABLE Driver (
+--     driverId VARCHAR(50) PRIMARY KEY, 
+--     dFname VARCHAR(50) NOT NULL,
+--     dLname VARCHAR(50) NOT NULL,
+--     gender CHAR(10),
+--     location VARCHAR(100),
+--     dateOfbirth CHAR(10)
+-- );
+
+-- -- Client table
+-- CREATE TABLE Client (
+--     clientId VARCHAR(50) PRIMARY KEY, 
+--     cFname VARCHAR(50) NOT NULL,
+--     cLname VARCHAR(50) NOT NULL,
+--     cPhone VARCHAR(20),
+--     clientType CHAR(20) CHECK (clientType IN ('Private', 'Business')),
+--     contractNumber VARCHAR(50) NULL,
+--     address VARCHAR(200), 
+--     email VARCHAR(50)
+-- );
+
+-- -- Taxi table
+-- CREATE TABLE Taxi (
+--     taxiId VARCHAR(50) PRIMARY KEY,    
+--     driverId VARCHAR(50),
+--     make VARCHAR(50),
+--     model VARCHAR(50),
+--     registrationNumber CHAR(20), 
+--     ownerId VARCHAR(50), 
+--     driverEmail VARCHAR(50)
+-- );
+
+-- -- Job table
+-- CREATE TABLE Job (
+--     jobId VARCHAR(50) PRIMARY KEY,      
+--     pickup_datetime CHAR(20) NOT NULL,   
+--     dropoff_datetime CHAR(20) NULL,      
+--     mileage INT NULL,         
+--     charge INT NULL,          
+--     jobStatus CHAR(20) CHECK (jobStatus IN ('Completed', 'Failed', 'Pending')) NOT NULL,
+--     driverId VARCHAR(50),            
+--     clientId VARCHAR(50),            
+--     failureReason VARCHAR(50) NULL,
+--     driverEmail VARCHAR(50),
+--     jobDate CHAR(10),              
+--     pickupLocation VARCHAR(100),  
+--     dropOfflocation VARCHAR(100)
+-- );
+
+-- -- Contract table
+-- CREATE TABLE Contract (
+--     contractId VARCHAR(50) PRIMARY KEY,
+--     clientId VARCHAR(50),          
+--     startDate CHAR(10),  
+--     endDate CHAR(10),           
+--     agreedJobs INT,           
+--     agreedFee INT            
+-- );
+
+-- -- Payment table
+-- CREATE TABLE Payment (
+--     paymentId VARCHAR(50) PRIMARY KEY,   
+--     jobId VARCHAR(50),                   
+--     paymentAmount INT,        
+--     paymentDate VARCHAR(50)            
+-- );
+
+-- -- Manager table
+-- CREATE TABLE Manager (
+--     managerId VARCHAR(50) PRIMARY KEY,   
+--     officeLocation VARCHAR(100),
+--     dFname VARCHAR(50),
+--     dLname VARCHAR(50),
+--     phoneNumber VARCHAR(20)
+-- );
+
+-- -- Owner table
+-- CREATE TABLE Owner (
+--     ownerId VARCHAR(50) PRIMARY KEY,
+--     oFname VARCHAR(50) NOT NULL,
+--     oLname VARCHAR(50) NOT NULL,
+--     oPhone CHAR(20),
+--     address VARCHAR(200) 
+-- );
+
+-- -- Inserting data to the tables
+
+
+-- -- Inserting date to driver table
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D001', 'John', 'Doe', 'Male', 'Glasgow Office', '1965-02-15');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D002', 'Jane', 'Smith', 'Female', 'Manchester', '1970-06-25');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D003', 'Michael', 'Johnson', 'Male', 'London', '1960-11-05');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D004', 'Emily', 'Davis', 'Female', 'Edinburgh Office', '1995-01-12');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D005', 'David', 'Brown', 'Male', 'Glasgow Office', '1988-03-22');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D006', 'Sarah', 'Taylor', 'Female', 'London', '1975-07-17');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D007', 'James', 'Wilson', 'Male', 'Edinburgh Office', '1955-09-30'); 
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D008', 'Patricia', 'Moore', 'Female', 'Glasgow Office', '1982-05-04'); 
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D009', 'Robert', 'Lee', 'Male', 'Manchester', '1965-10-15'); 
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D010', 'Linda', 'Martin', 'Female', 'London', '1994-12-08');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D011', 'William', 'Clark', 'Male', 'Edinburgh Office', '1987-04-20');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D012', 'Elizabeth', 'Lewis', 'Female', 'Glasgow Office', '1989-02-18'); 
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D013', 'Richard', 'Walker', 'Male', 'Manchester', '1967-09-10');
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D014', 'Susan', 'Hall', 'Female', 'London', '1963-06-27');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D015', 'Joseph', 'Allen', 'Male', 'Glasgow Office', '1990-03-14');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D016', 'Mary', 'Young', 'Female', 'Edinburgh Office', '1966-11-03');
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D017', 'Charles', 'Hernandez', 'Male', 'London', '1992-08-09');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D018', 'Barbara', 'King', 'Female', 'Manchester', '1959-01-23');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D019', 'Thomas', 'Scott', 'Male', 'Glasgow Office', '1969-04-17');  
+-- INSERT INTO Driver (driverID, dFName, dLName, gender, location, dateOfBirth) 
+-- VALUES ('D020', 'Jessica', 'Adams', 'Female', 'Edinburgh Office', '1970-12-30');  
+
+
+-- -- Inserting data into the Client table
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C001', 'Alice', 'Walker', '123-456-7890', 'Private', 'C0001', '123 Main St, Glasgow', 'alice.walker@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C002', 'Bob', 'Martin', '123-456-7891', 'Business', 'C0002', '456 Oak Rd, Edinburgh', 'bob.martin@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C003', 'Charlie', 'Lee', '123-456-7892', 'Private', 'C0003', '789 Birch Ave, Aberdeen', 'charlie.lee@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C004', 'Diana', 'Moore', '123-456-7893', 'Business', 'C0004', '101 Pine St, Dundee', 'diana.moore@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C005', 'Edward', 'Harris', '123-456-7894', 'Private', 'C0005', '202 Cedar Blvd, Inverness', 'edward.harris@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C006', 'Fiona', 'Davis', '123-456-7895', 'Business', 'C0006', '303 Maple Dr, Stirling', 'fiona.davis@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C007', 'George', 'Evans', '123-456-7896', 'Private', 'C0007', '404 Elm St, Perth', 'george.evans@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C008', 'Hannah', 'Gonzalez', '123-456-7897', 'Business', 'C0008', '505 Fir Ln, Glasgow', 'hannah.gonzalez@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C009', 'Isla', 'Foster', '123-456-7898', 'Private', 'C0009', '606 Walnut Ave, Edinburgh', 'isla.foster@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C010', 'Jack', 'Brown', '123-456-7899', 'Business', 'C0010', '707 Oak St, Aberdeen', 'jack.brown@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C011', 'Karen', 'Wright', '123-456-7900', 'Private', 'C0011', '808 Pine Rd, Dundee', 'karen.wright@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C012', 'Leo', 'Thomas', '123-456-7901', 'Business', 'C0012', '909 Cedar St, Inverness', 'leo.thomas@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C013', 'Mona', 'Roberts', '123-456-7902', 'Private', 'C0013', '1010 Maple Dr, Stirling', 'mona.roberts@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C014', 'Nina', 'Jackson', '123-456-7903', 'Business', 'C0014', '1111 Elm St, Perth', 'nina.jackson@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C015', 'Oscar', 'Martinez', '123-456-7904', 'Private', 'C0015', '1212 Fir Ln, Glasgow', 'oscar.martinez@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C016', 'Paul', 'Perez', '123-456-7905', 'Business', 'C0016', '1313 Pine Rd, Edinburgh', 'paul.perez@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C017', 'Quincy', 'Green', '123-456-7906', 'Private', 'C0017', '1414 Oak St, Aberdeen', 'quincy.green@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C018', 'Rita', 'Adams', '123-456-7907', 'Business', 'C0018', '1515 Walnut Ave, Dundee', 'rita.adams@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C019', 'Steve', 'King', '123-456-7908', 'Private', 'C0019', '1616 Cedar Blvd, Inverness', 'steve.king@example.com');
+-- INSERT INTO Client (clientID, cFName, cLName, cPhone, clientType, contractNumber, address, email) 
+-- VALUES ('C020', 'Tina', 'Nelson', '123-456-7909', 'Business', 'C0020', '1717 Maple Dr, Stirling', 'tina.nelson@example.com');
+
+-- -- Inserting data to the taxi table
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T001', 'D001', 'Toyota', 'Camry', 'W1234', 'O001', 'driver001@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T002', 'D002', 'Honda', 'Accord', 'B5678', 'O001', 'driver002@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T003', 'D003', 'Ford', 'Fusion', 'C9876', 'O002', 'driver003@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T004', 'D004', 'Chevrolet', 'Impala', 'W2345', 'O003', 'driver004@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T005', 'D005', 'Nissan', 'Altima', 'E6789', 'O003', 'driver005@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T006', 'D006', 'BMW', '5 Series', 'F2346', 'O004', 'driver006@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T007', 'D007', 'Mercedes', 'C-Class', 'W7890', 'O004', 'driver007@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T008', 'D008', 'Hyundai', 'Sonata', 'H1234', 'O005', 'driver008@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T009', 'D009', 'Kia', 'Optima', 'I5678', 'O005', 'driver009@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T010', 'D010', 'Audi', 'A4', 'W9876', 'O006', 'driver010@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T011', 'D011', 'Volkswagen', 'Passat', 'K2345', 'O006', 'driver011@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T012', 'D012', 'Mazda', '6', 'L6789', 'O006', 'driver012@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T013', 'D013', 'Toyota', 'Corolla', 'M2346', 'O007', 'driver013@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T014', 'D014', 'Honda', 'Civic', 'N7890', 'O007', 'driver014@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T015', 'D015', 'Ford', 'Escape', 'O1234', 'O007', 'driver015@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T016', 'D016', 'Chevrolet', 'Malibu', 'P5678', 'O004', 'driver016@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T017', 'D017', 'Nissan', 'Maxima', 'Q9876', 'O004', 'driver017@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T018', 'D018', 'BMW', '3 Series', 'R2345', 'O003', 'driver018@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T019', 'D019', 'Mercedes', 'E-Class', 'S6789', 'O003', 'driver019@example.com');
+-- INSERT INTO Taxi (taxiID, driverID, make, model, registrationNumber, ownerID, driverEmail) 
+-- VALUES ('T020', 'D020', 'Hyundai', 'Tucson', 'W1234', 'O003', 'driver020@example.com');
+
+
+
+-- -- Inserting data to job table
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J001', '2024-11-01 08:00', '2024-11-01 09:00', 15, 20, 'Completed', 'D001', 'C001', NULL, 'driver001@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J002', '2024-11-01 10:00', '2024-11-01 11:30', 30, 45, 'Completed', 'D002', 'C002', NULL, 'driver002@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J003', '2024-11-01 12:00', '2024-11-01 13:15', 25, 35, 'Pending', 'D003', 'C003', NULL, 'driver003@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J004', '2024-11-01 14:00', '2024-11-01 15:15', 18, 25, 'Completed', 'D004', 'C004', NULL, 'driver004@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J005', '2024-11-01 16:00', '2024-11-01 17:00', 20, 30, 'Failed', 'D005', 'C005', 'Client was not available', 'driver005@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J006', '2024-11-02 08:15', '2024-11-02 09:15', 10, 15, 'Completed', 'D006', 'C006', NULL, 'driver006@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J007', '2024-11-02 09:30', '2024-11-02 11:00', 35, 50, 'Completed', 'D007', 'C007', NULL, 'driver007@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J008', '2024-11-02 12:00', '2024-11-02 13:30', 22, 32, 'Completed', 'D008', 'C008', NULL, 'driver008@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J009', '2024-11-02 14:00', '2024-11-02 15:00', 12, 18, 'Pending', 'D009', 'C009', NULL, 'driver009@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J010', '2024-11-02 16:00', '2024-11-02 17:30', 28, 40, 'Failed', 'D010', 'C010', 'Traffic delay', 'driver010@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J011', '2024-11-03 08:30', '2024-11-03 09:30', 14, 20, 'Completed', 'D011', 'C011', NULL, 'driver011@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J012', '2024-11-03 10:00', '2024-11-03 11:00', 18, 25, 'Pending', 'D012', 'C012', NULL, 'driver012@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J013', '2024-11-03 11:30', '2024-11-03 12:30', 16, 24, 'Completed', 'D013', 'C013', NULL, 'driver013@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J014', '2024-11-03 13:00', '2024-11-03 14:30', 38, 55, 'Completed', 'D014', 'C014', NULL, 'driver014@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J015', '2024-11-03 15:00', '2024-11-03 16:00', 22, 33, 'Pending', 'D015', 'C015', NULL, 'driver015@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J016', '2024-11-04 08:00', '2024-11-04 09:00', 20, 30, 'Completed', 'D016', 'C016', NULL, 'driver016@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J017', '2024-11-04 09:30', '2024-11-04 10:30', 12, 18, 'Completed', 'D017', 'C017', NULL, 'driver017@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J018', '2024-11-04 11:00', '2024-11-04 12:00', 40, 60, 'Failed', 'D018', 'C018', 'Vehicle breakdown', 'driver018@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J019', '2024-11-04 13:00', '2024-11-04 14:00', 30, 45, 'Completed', 'D019', 'C019', NULL, 'driver019@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J020', '2024-11-04 15:00', '2024-11-04 16:00', 18, 27, 'Pending', 'D020', 'C020', NULL, 'driver020@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J021', '2000-11-05 08:00', '2000-11-05 09:00', 25, 35, 'Completed', 'D015', 'C013', NULL, 'driver021@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J022', '2000-11-10 14:00', '2000-11-10 15:30', 30, 50, 'Completed', 'D002', 'C015', NULL, 'driver022@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J023', '2000-11-12 16:00', '2000-11-12 17:30', 20, 40, 'Completed', 'D020', 'C019', NULL, 'driver023@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J024', '2000-11-15 09:00', '2000-11-15 10:30', 22, 35, 'Completed', 'D001', 'C001', NULL, 'driver001@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J025', '2000-12-05 13:00', '2000-12-05 14:30', 25, 40, 'Completed', 'D002', 'C002', NULL, 'driver002@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J026', '2000-12-10 16:00', '2000-12-10 17:00', 18, 30, 'Completed', 'D003', 'C003', NULL, 'driver003@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J027', '2000-12-15 08:30', '2000-12-15 09:45', 14, 25, 'Pending', 'D004', 'C004', NULL, 'driver004@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J028', '2024-01-20 10:00', '2024-01-20 11:30', 30, 50, 'Completed', 'D005', 'C005', NULL, 'driver005@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J029', '2024-01-25 14:00', '2024-01-25 15:30', 40, 60, 'Completed', 'D006', 'C006', NULL, 'driver006@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J030', '2024-02-01 08:00', '2024-02-01 09:00', 12, 20, 'Completed', 'D007', 'C007', NULL, 'driver007@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J031', '2024-02-03 11:30', '2024-02-03 12:30', 20, 35, 'Failed', 'D008', 'C008', 'Vehicle malfunction', 'driver008@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J032', '2024-02-05 14:00', '2024-02-05 15:30', 18, 30, 'Pending', 'D009', 'C009', NULL, 'driver009@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J033', '2024-02-08 09:00', '2024-02-08 10:00', 22, 40, 'Completed', 'D010', 'C010', NULL, 'driver010@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J034', '2024-02-12 13:30', '2024-02-12 14:30', 30, 50, 'Completed', 'D011', 'C011', NULL, 'driver011@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J035', '2024-02-14 15:00', '2024-02-14 16:00', 16, 24, 'Completed', 'D012', 'C012', NULL, 'driver012@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J036', '2000-11-22 12:00', '2000-11-22 13:30', 18, 30, 'Completed', 'D013', 'C013', NULL, 'driver013@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J037', '2000-12-01 09:00', '2000-12-01 10:30', 20, 40, 'Completed', 'D014', 'C014', NULL, 'driver014@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J038', '2024-03-01 08:00', '2024-03-01 09:00', 25, 35, 'Completed', 'D015', 'C015', NULL, 'driver015@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J039', '2024-03-05 14:00', '2024-03-05 15:00', 35, 55, 'Completed', 'D016', 'C016', NULL, 'driver016@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J040', '2024-03-10 11:00', '2024-03-10 12:00', 28, 45, 'Failed', 'D017', 'C017', 'Client unresponsive', 'driver017@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J041', '2024-03-15 13:30', '2024-03-15 14:30', 40, 60, 'Completed', 'D018', 'C018', NULL, 'driver018@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J042', '2024-03-18 09:00', '2024-03-18 10:00', 22, 35, 'Completed', 'D019', 'C019', NULL, 'driver019@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J043', '2024-03-20 12:00', '2024-03-20 13:30', 18, 30, 'Completed', 'D020', 'C020', NULL, 'driver020@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J044', '2024-11-02 09:00', '2024-11-02 10:30', 30, 45, 'Completed', 'D004', 'C003', NULL, 'driver004@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J045', '2024-11-03 14:00', '2024-11-03 15:15', 20, 30, 'Completed', 'D005', 'C003', NULL, 'driver005@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J046', '2024-11-01 07:30', '2024-11-01 08:00', 10, 20, 'Pending', 'D001', 'C009', NULL, 'driver001@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J047', '2024-11-04 10:00', '2024-11-04 11:00', 15, 25, 'Completed', 'D002', 'C009', NULL, 'driver002@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J048', '2024-11-06 16:30', '2024-11-06 17:00', 12, 22, 'Completed', 'D003', 'C009', NULL, 'driver003@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J049', '2024-11-02 11:30', '2024-11-02 12:30', 18, 28, 'Completed', 'D004', 'C015', NULL, 'driver004@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J050', '2024-11-03 17:00', '2024-11-03 18:00', 22, 35, 'Pending', 'D005', 'C015', NULL, 'driver005@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J051', '2024-11-05 08:00', '2024-11-05 09:00', 20, 30, 'Completed', 'D001', 'C015', NULL, 'driver001@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J052', '2024-11-01 10:00', '2024-11-01 11:15', 25, 40, 'Completed', 'D002', 'C005', NULL, 'driver002@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J053', '2024-11-02 14:00', '2024-11-02 15:30', 30, 45, 'Completed', 'D003', 'C005', NULL, 'driver003@example.com');
+-- INSERT INTO Job (jobID, pickup_datetime, dropoff_datetime, mileage, charge, jobStatus, driverID, clientID, failureReason, driverEmail)
+-- VALUES ('J054', '2024-11-04 18:00', '2024-11-04 19:00', 35, 50, 'Completed', 'D004', 'C005', NULL, 'driver004@example.com');
+
+
+-- -- Inserting data to client table
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C001', 'C001', '2024-01-01', '2025-01-01', 10, 500);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C002', 'C002', '2024-02-01', '2025-02-01', 15, 750);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C003', 'C003', '2024-03-01', '2025-03-01', 20, 1000);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C004', 'C004', '2024-04-01', '2025-04-01', 12, 600);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C005', 'C005', '2024-05-01', '2025-05-01', 18, 900);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C006', 'C006', '2024-06-01', '2025-06-01', 25, 1250);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C007', 'C007', '2024-07-01', '2025-07-01', 30, 1500);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C008', 'C008', '2024-08-01', '2025-08-01', 22, 1100);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C009', 'C009', '2024-09-01', '2025-09-01', 10, 500);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C010', 'C010', '2024-10-01', '2025-10-01', 16, 800);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C011', 'C011', '2024-11-01', '2025-11-01', 20, 1000);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C012', 'C012', '2024-12-01', '2025-12-01', 18, 900);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C013', 'C013', '2024-01-15', '2025-01-15', 12, 600);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C014', 'C014', '2024-02-15', '2025-02-15', 14, 700);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C015', 'C015', '2024-03-15', '2025-03-15', 17, 850);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C016', 'C016', '2024-04-15', '2025-04-15', 10, 500);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C017', 'C017', '2024-05-15', '2025-05-15', 15, 750);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C018', 'C018', '2024-06-15', '2025-06-15', 20, 1000);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C019', 'C019', '2024-07-15', '2025-07-15', 18, 900);
+-- INSERT INTO Contract (contractID, clientID, startDate, endDate, agreedJobs, agreedFee)
+-- VALUES ('C020', 'C020', '2024-08-15', '2025-08-15', 22, 1100);
+
+-- -- Inserting data to payment table
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P001', 'J001', 100, '2024-01-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P002', 'J002', 150, '2024-02-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P003', 'J003', 200, '2024-03-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P004', 'J004', 250, '2024-04-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P005', 'J005', 300, '2024-05-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P006', 'J006', 350, '2024-06-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P007', 'J007', 400, '2024-07-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P008', 'J008', 450, '2024-08-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P009', 'J009', 500, '2024-09-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P010', 'J010', 550, '2024-10-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P011', 'J011', 600, '2024-11-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P012', 'J012', 650, '2024-12-01');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P013', 'J013', 700, '2024-01-15');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P014', 'J014', 750, '2024-02-15');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P015', 'J015', 800, '2024-03-15');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P016', 'J016', 850, '2024-04-15');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P017', 'J017', 900, '2024-05-15');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P018', 'J018', 950, '2024-06-15');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P019', 'J019', 1000, '2024-07-15');
+-- INSERT INTO Payment (paymentID, jobID, paymentAmount, paymentDate)
+-- VALUES ('P020', 'J020', 1050, '2024-08-15');
+
+-- -- Inserting data to manager table
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M001', 'Glasgow Office', 'Paddy', 'MacKay', '0141 123 4567');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M002', 'Edinburgh Office', 'Linda', 'Walker', '0131 234 5678');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M003', 'Aberdeen Office', 'John', 'Wilson', '01224 345 6789');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M004', 'Dundee Office', 'Sarah', 'Taylor', '01382 456 7890');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M005', 'Inverness Office', 'Robert', 'Brown', '01463 567 8901');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M006', 'Stirling Office', 'Mary', 'Davis', '01786 678 9012');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M007', 'Perth Office', 'James', 'Johnson', '01738 789 0123');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M008', 'Glasgow Office', 'Charles', 'Hernandez', '0141 890 1234');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M009', 'Edinburgh Office', 'David', 'Lee', '0131 901 2345');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M010', 'Aberdeen Office', 'Elizabeth', 'Martinez', '01224 012 3456');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M011', 'Dundee Office', 'Michael', 'Scott', '01382 123 4567');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M012', 'Inverness Office', 'Thomas', 'Young', '01463 234 5678');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M013', 'Stirling Office', 'Jessica', 'Adams', '01786 345 6789');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M014', 'Perth Office', 'William', 'Clark', '01738 456 7890');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M015', 'Glasgow Office', 'Barbara', 'King', '0141 567 8901');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M016', 'Edinburgh Office', 'Richard', 'Hughes', '0131 678 9012');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M017', 'Aberdeen Office', 'Linda', 'Taylor', '01224 789 0123');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M018', 'Dundee Office', 'Susan', 'Evans', '01382 890 1234');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M019', 'Inverness Office', 'Joseph', 'Allen', '01463 901 2345');
+-- INSERT INTO Manager (managerID, officeLocation, dFName, dLName, phoneNumber) 
+-- VALUES ('M020', 'Stirling Office', 'Patricia', 'Moore', '01786 012 3456');
+
+-- -- Inserting data to Owner table
+-- INSERT INTO Owner (ownerID, oFName, oLName, oPhone, address)
+-- VALUES ('O001', 'Alice', 'Johnson', '0141 123 4567', '123 Elm Street, Glasgow');
+-- INSERT INTO Owner (ownerID, oFName, oLName, oPhone, address)
+-- VALUES ('O002', 'Brian', 'Smith', '0131 234 5678', '456 Oak Avenue, Edinburgh');
+-- INSERT INTO Owner (ownerID, oFName, oLName, oPhone, address)
+-- VALUES ('O003', 'Carla', 'Davis', '01224 345 6789', '789 Pine Road, Aberdeen');
+-- INSERT INTO Owner (ownerID, oFName, oLName, oPhone, address)
+-- VALUES ('O004', 'David', 'Wilson', '01382 456 7890', '101 Maple Lane, Dundee');
+-- INSERT INTO Owner (ownerID, oFName, oLName, oPhone, address)
+-- VALUES ('O005', 'Eva', 'Taylor', '01463 567 8901', '202 Birch Drive, Inverness');
+-- INSERT INTO Owner (ownerID, oFName, oLName, oPhone, address)
+-- VALUES ('O006', 'Frank', 'Moore', '01786 678 9012', '303 Cedar Street, Stirling');
+-- INSERT INTO Owner (ownerID, oFName, oLName, oPhone, address)
+-- VALUES ('O007', 'Grace', 'Anderson', '01738 789 0123', '404 Willow Road, Perth');
+
