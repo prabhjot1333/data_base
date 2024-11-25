@@ -1,0 +1,11 @@
+.search-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;  /* Adjust the gap value to your preference */
+  }
+  
+  .search-inputs input {
+    padding: 10px;
+    margin: 5px 0;  /* Optional: adds space around each input */
+  }
+  
