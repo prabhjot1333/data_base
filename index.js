@@ -23,9 +23,20 @@ const db = new sqlite3.Database("./fast_cab.db", (err) => {
 });
 
 // Route: Homepage - Menu
+// Route: Homepage - Menu
 app.get("/", (req, res) => {
-    res.render("menu");
+    const query = `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'`;
+    db.all(query, [], (err, tables) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).send("Error fetching tables.");
+        }
+        // Define filters here if necessary (e.g., when a table is selected)
+        const filters = false;  // Example: Set it to false if no filters are needed initially
+        res.render("menu", { tables, filters }); // Pass 'tables' and 'filters' to the 'menu' view
+    });
 });
+
 
 // Route: Display table list for selected action
 app.get("/:action", (req, res) => {
@@ -84,7 +95,7 @@ app.get("/:action/:table", (req, res) => {
                 res.render("delete_row", { table, rows });
             }
         });
-        
+
     } else if (action === "update") {
         const query = `SELECT rowid, * FROM "${table}"`;  // Using rowid for the update
         db.all(query, [], (err, rows) => {
@@ -97,6 +108,19 @@ app.get("/:action/:table", (req, res) => {
         });
     }
 });
+
+app.get("/search", (req, res) => {
+    const query = `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'`;
+    db.all(query, [], (err, tables) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send("Error fetching table list.");
+        } else {
+            res.render("select_table", { tables }); // Render table selection form
+        }
+    });
+});
+
 
 // Route: Display form to edit a row (GET)
 app.get("/update/:table/:id", (req, res) => {
@@ -176,8 +200,77 @@ app.post("/update/:table", (req, res) => {
     });
 });
 
+// Route: Show the filter form for a specific table (GET)
+app.get("/search", (req, res) => {
+    // Fetch all tables from the database
+    db.all("SELECT name FROM sqlite_master WHERE type='table';", [], (err, tables) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).send("Error retrieving table names.");
+        }
+
+        // Pass the tables data to the view
+        res.render("select_table", { tables }); // Render the select_table.ejs template with tables
+    });
+});
+
+
+// Route: Show the filter form for a specific table (POST)
+app.post("/search", (req, res) => {
+    const table = req.body.table;
+    if (!table) {
+        return res.redirect("/search");
+    }
+
+    const query = `PRAGMA table_info(${table})`;
+    db.all(query, [], (err, columns) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).send("Error retrieving table schema.");
+        }
+
+        db.all("SELECT name FROM sqlite_master WHERE type='table';", [], (err, tables) => {
+            if (err) {
+                console.error(err.message);
+                return res.status(500).send("Error retrieving table names.");
+            }
+
+            res.render("select_table", { tables, table, columns });
+        });
+    });
+});
+
+
+
+
+app.post("/search/results", (req, res) => {
+    const table = req.body.table || req.body.currentTable; // Use currentTable if table is not selected
+    const filters = Object.keys(req.body)
+        .filter((key) => key !== "table" && key !== "currentTable" && req.body[key])
+        .map((key) => `${key} LIKE ?`);
+    const values = Object.values(req.body)
+        .filter((value) => value && value !== table && value !== req.body.currentTable)
+        .map((value) => `%${value}%`);
+
+    let query = `SELECT * FROM "${table}"`;
+    if (filters.length > 0) {
+        query += ` WHERE ${filters.join(" AND ")}`;
+    }
+
+    db.all(query, values, (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send("Error executing search query.");
+        } else {
+            res.render("search_results", { rows, table });
+        }
+    });
+});
+
+
 
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
