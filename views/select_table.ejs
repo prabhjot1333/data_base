@@ -1,0 +1,27 @@
+<form action="/search/results" method="POST">
+    <div class="search-inputs">
+        <label for="table">Select Table:</label>
+        <select name="table" id="table" required>
+            <% tables.forEach((tbl) => { %>
+                <option value="<%= tbl.name %>" <%= tbl.name === table ? 'selected' : '' %>><%= tbl.name %></option>
+            <% }); %>
+        </select>
+
+
+        <br>
+
+        <!-- Dynamically create filter inputs based on columns -->
+        <% if (columns) { %>
+            <% columns.forEach((column) => { %>
+                <label for="<%= column.name %>"><%= column.name %>:</label>
+                <input type="text" name="<%= column.name %>" placeholder="Filter by <%= column.name %>" />
+            <% }); %>
+        <% } %>
+
+        <button type="submit">Search</button>
+    </div>
+</form>
+
+
+
+

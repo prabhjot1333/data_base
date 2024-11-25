@@ -1,0 +1,10 @@
+<h1>Filter <%= table %> Table</h1>
+<form action="/search/results" method="POST">
+    <input type="hidden" name="table" value="<%= table %>">
+    <% columns.forEach((column) => { %>
+        <label for="<%= column.name %>"><%= column.name %>:</label>
+        <input type="text" name="<%= column.name %>" id="<%= column.name %>">
+        <br>
+    <% }); %>
+    <button type="submit">Search</button>
+</form>

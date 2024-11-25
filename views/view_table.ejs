@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table: <%= table %></title>
+</head>
+<body>
+    <h1>Table: <%= table %></h1>
+    <table>
+        <thead>
+            <tr>
+                <% Object.keys(rows[0]).forEach(key => { %> 
+                    <th><%= key %></th>
+                <% }); %>
+            </tr>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <% Object.keys(row).forEach(key => { %>
+                        <td><%= row[key] %></td>
+                    <% }); %>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <a href="/">Back to Menu</a>
+</body>
+</html>

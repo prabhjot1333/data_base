@@ -1,0 +1,29 @@
+<div class="search-results">
+    <h2>Search Results for <%= table %></h2>
+    <table>
+        <thead>
+            <tr>
+                <% if (rows.length > 0) { %>
+                    <% Object.keys(rows[0]).forEach((column) => { %>
+                        <th><%= column %></th>
+                    <% }); %>
+                <% } else { %>
+                    <th>No results found</th>
+                <% } %>
+            </tr>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <% Object.values(row).forEach(value => { %>
+                        <td><%= value %></td>
+                    <% }); %>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!-- Return to Menu Button -->
+    <button onclick="window.location.href='/';">Return to Menu</button>
+</div>
+

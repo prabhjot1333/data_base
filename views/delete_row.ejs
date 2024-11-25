@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Record from <%= table %></title>
+</head>
+<body>
+    <h1>Delete Record from Table: <%= table %></h1>
+    <form action="/delete/<%= table %>" method="POST">
+        <table>
+            <thead>
+                <tr>
+                    <th>Row ID</th>
+                    <% Object.keys(rows[0] || {}).forEach(key => { %>
+                        <% if (key !== 'rowid') { %> <!-- Skip rowid column in the table headers -->
+                            <th><%= key %></th>
+                        <% } %>
+                    <% }); %>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% rows.forEach(row => { %>
+                    <tr>
+                        <td><%= row.rowid %></td> <!-- Display rowid for deletion -->
+                        <% Object.keys(row).forEach(key => { %>
+                            <% if (key !== 'rowid') { %>
+                                <td><%= row[key] %></td>
+                            <% } %>
+                        <% }); %>
+                        <td>
+                            <button type="submit" name="id" value="<%= row.rowid %>">Delete</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </form>
+    <br>
+    <a href="/">Back to Menu</a>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fast Cabs Menu</title>
+</head>
+<body>
+    <h1>Welcome to Fast Cabs Database</h1>
+    <ul>
+        <li><a href="/view">View Tables</a></li>
+        <li><a href="/add">Add to Tables</a></li>
+        <li><a href="/delete">Delete from Tables</a></li>
+        <li><a href="/update">Update Table Rows</a></li>
+    </ul>
+
+    <form action="/search" method="POST">
+        <label for="table">Select Table:</label>
+        <select name="table" id="table" onchange="this.form.submit()">
+            <option value="">Select Table</option>
+            <% tables.forEach(function(table) { %>
+                <option value="<%= table.name %>"><%= table.name %></option>
+            <% }) %>
+        </select>
+    </form>
+
+    <% if (filters) { %> <!-- Dynamic Filters -->
+        <form action="/search/results" method="POST">
+            <label for="table">Choose a table:</label>
+            <select name="table" id="table" onchange="this.form.submit()">
+                <option value="">Select Table</option>
+                <% tables.forEach(function(table) { %> <!-- Loop through the tables array -->
+                    <option value="<%= table.name %>"><%= table.name %></option>
+                <% }) %>
+            </select>
+        </form>        
+    <% } %>
+</body>
+</html>
+
+

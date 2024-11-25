@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Record in <%= table %></title>
+</head>
+<body>
+    <h1>Update Record in Table: <%= table %></h1>
+    <form action="/update/<%= table %>" method="POST">
+        <table>
+            <thead>
+                <tr>
+                    <th>Row ID</th>
+                    <% Object.keys(rows[0] || {}).forEach(key => { %>
+                        <% if (key !== 'rowid') { %> <!-- Skip rowid column in the table headers -->
+                            <th><%= key %></th>
+                        <% } %>
+                    <% }); %>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% rows.forEach(row => { %>
+                    <tr>
+                        <td><%= row.rowid %></td> <!-- Display rowid for update -->
+                        <% Object.keys(row).forEach(key => { %>
+                            <% if (key !== 'rowid') { %>
+                                <td><%= row[key] %></td>
+                            <% } %>
+                        <% }); %>
+                        <td>
+                            <a href="/update/<%= table %>/<%= row.rowid %>">Edit</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </form>
+    <br>
+    <a href="/">Back to Menu</a>
+</body>
+</html>
